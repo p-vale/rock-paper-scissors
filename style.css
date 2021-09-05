@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    overflow: hidden;
+    color: goldenrod;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 19px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 51px;
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 30px;
+    margin-bottom: 30px;
+}
+
+p {
+    color: blanchedalmond;
+}
+
+#container {
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content:space-evenly;
+    align-items: center;
+}
+
+.subContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+#buttons {
+    width: 50vw;
+    display: flex;
+    justify-content:space-between;
+}
+
+button {
+    padding: 10px;
+    min-width: 110px;
+    background-color: black;
+    border: 2px solid goldenrod;
+    border-radius: 5%;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 19px;
+    font-weight: bold;
+    color: goldenrod;
+}
+
+button:hover {
+    color: black;
+    background-color: goldenrod;
+    border: none;
+    padding: 12px; /*the spacing is relative, this makes up for the -4px of border: none*/
+}
+
+#scoreBoard {
+    width: 50vw;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+}
+
+.points {
+    display: flex;
+    flex-direction: column;
+}

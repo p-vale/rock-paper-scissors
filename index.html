@@ -3,9 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Rock, Paper, Scissors</title>
-    <script type="text/javascript" src="script.js"></script>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <div id="container"></div>
+    <div id="container">
+        <div class="subContainer" id="instructions">
+            <h2>Rock, paper, scissors game</h2>
+            <p>Play against the computer. The first to win five rounds wins the game!</p>
+        </div>
+        <div class="subContainer" id="userPlay">
+            <h3>Choose</h3>
+            <div id="buttons">
+                <button type="button" id="r">ROCK</button>
+                <button type="button" id="p">PAPER</button>
+                <button type="button" id="s">SCISSORS</button>
+            </div>
+            <!--DISPLAY round() result-->
+        </div>
+        <div class="subContainer" id="scoreBoard">
+            <div class="points" id="user">
+                <p>Your wins</p>
+                <!--DISPLAY userWins-->
+            </div>
+            <div class="points" id="computer">
+                <p>Computer wins</p>
+                <!--DISPLAY computerWins-->
+            </div>
+        </div>
+        
+    </div>
+    <script type="text/javascript" src="script.js"></script>
 </body>
 </html>
