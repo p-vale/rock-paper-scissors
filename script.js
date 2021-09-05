@@ -43,13 +43,12 @@ function round(userSelection, computerSelection) {
 }
 
 
-//use the round1 function inside of this one to play a 5 round game that keeps score and reports a winner or loser at the end
 function game() {
 
     //play 5 rounds
     for (let i = 5; i > 0; i--) {
 
-        //ask the user to choose
+        //ASK USER TO CHOOSE
         let userChoice = prompt("Rock, paper, or scissors?");
         userChoice = userChoice.toLowerCase();
         console.log(userChoice);
