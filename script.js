@@ -1,23 +1,13 @@
-//Create three buttons, one for each selection.
-//Add an event listener to the buttons that calls your playRound function 
-//with the correct playerSelection every time a button is clicked
-//(you can keep the console.logs for this step)
-
-//Add a div for displaying results and change all of your console.logs into DOM methods.
-
-//Display the running score,
-//and announce a winner of the game once one player reaches 5 points.
-
 let userWins = 0;
 let computerWins = 0;
 
-//begin with a function called computerPlay that will randomly return either ‘Rock’, ‘Paper’ or ‘Scissors’
+
 function computerPlay() {
     const rps = ["rock", "paper", "scissors"];
     return rps[Math.floor(Math.random() * rps.length)]; 
 }
 
-//compare in a single round of Rock Paper Scissors
+
 function round(userSelection, computerSelection) {
     //draws
     if (userSelection === computerSelection) {
@@ -51,6 +41,42 @@ function round(userSelection, computerSelection) {
     console.log("Something is wrong");
     return "Something is wrong";
 }
+
+function winner(user, pc) {
+    if (user == 5) {
+        console.log("You win!");
+        return "You win!";
+    } else if (pc == 5) {
+        console.log("You lose!")
+        return "You lose!";
+    }
+    return;
+}
+
+
+//EVENT LISTENERS
+document.querySelector('#r').addEventListener("click", () => {
+    round("rock", computerPlay());
+    winner(userWins, computerWins)
+});
+
+document.querySelector('#p').addEventListener('click', () => {
+    round("paper", computerPlay());
+    winner(userWins, computerWins)
+});
+
+document.querySelector('#s').addEventListener('click', () => {
+    round("scissors", computerPlay());
+    winner(userWins, computerWins)
+});
+
+//Add a div for displaying results and change all of your console.logs into DOM methods.
+const div = document.createElement('div'); 
+
+//Display the running score,
+//and announce a winner of the game once one player reaches 5 points.
+
+
 
 
 /* function game() {
