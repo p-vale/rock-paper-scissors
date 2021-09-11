@@ -32,13 +32,14 @@ p {
     background-color: black;
     display: flex;
     flex-direction: column;
-    justify-content:space-evenly;
+    justify-content: center;
     align-items: center;
 }
 
 .subContainer {
     display: flex;
     flex-direction: column;
+    margin-top: 15vh;
 }
 
 #buttons {
@@ -49,10 +50,10 @@ p {
 
 button {
     padding: 10px;
-    min-width: 110px;
+    width: 120px;
     background-color: black;
     border: 2px solid goldenrod;
-    border-radius: 5%;
+    border-radius: 2%;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 19px;
     font-weight: bold;
@@ -66,6 +67,11 @@ button:hover {
     padding: 12px; /*the spacing is relative, this makes up for the -4px of border: none*/
 }
 
+#roundResult {
+    min-height: 25px; /*the result starts empity, make shure the space doesn't change*/
+    padding-bottom: 4vh;
+}
+
 #scoreBoard {
     width: 50vw;
     display: flex;
@@ -76,4 +82,11 @@ button:hover {
 .points {
     display: flex;
     flex-direction: column;
+    font-weight: bold;
+}
+
+#results button {
+    width: 170px;
+    padding-top: 10px;
+    margin: auto;
 }

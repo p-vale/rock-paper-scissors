@@ -1,122 +1,106 @@
 let userWins = 0;
-let computerWins = 0;
+let pcWins = 0;
+yourWins.innerHTML = userWins;
+computerWins.innerHTML = pcWins;
 
 
-function computerPlay() {
+function pcPlay() {
     const rps = ["rock", "paper", "scissors"];
     return rps[Math.floor(Math.random() * rps.length)]; 
 }
 
 
-function round(userSelection, computerSelection) {
-    //draws
-    if (userSelection === computerSelection) {
-        console.log("It's a draw");
-        return "It's a draw";
+function round(user, pc) {
+
+    if (user === pc) {
+        roundResult.innerHTML="It's a draw";
+        return;
     }
-
     //user wins
-    if (userSelection === "paper" && computerSelection === "rock") {
-        console.log("You won this round");
+    if (user === "paper" && pc === "rock") {
         userWins++;
-        return "You won this round " + userSelection + " beats " + computerSelection;
+        roundResult.innerHTML="You won this round: " + user + " beats " + pc;
+        return;
 
-    } else if (userSelection === "rock" && computerSelection === "scissors") {
-        console.log("You won this round");
+    } else if (user === "rock" && pc === "scissors") {
         userWins++;
-        return "You won this round " + userSelection + " beats " + computerSelection;
+        roundResult.innerHTML="You won this round: " + user + " beats " + pc;
+        return;
 
-    } else if (userSelection === "scissors" && computerSelection === "paper") {
-        console.log("You won this round");
+    } else if (user === "scissors" && pc === "paper") {
         userWins++;
-        return "You won this round " + userSelection + " beats " + computerSelection;
-    
+        roundResult.innerHTML="You won this round: " + user + " beats " + pc;
+        return;
     //computer wins
     } else {
-        console.log("You lost this round");
-        computerWins++;
-        return "You lost this round " + computerSelection + " beats " + userSelection;
+        pcWins++;
+        roundResult.innerHTML="You lost this round: " + pc + " beats " + user;
+        return;
     }
-
-    console.log("Something is wrong");
-    return "Something is wrong";
 }
+
+
+function testWinner() {
+    if (userWins < 5 && pcWins < 5){
+        yourWins.innerHTML = userWins;
+        computerWins.innerHTML = pcWins;
+    } else if (userWins == 5 | pcWins == 5) {
+        winner(userWins, pcWins);
+    }
+}
+
 
 function winner(user, pc) {
-    if (user == 5) {
-        console.log("You win!");
-        return "You win!";
-    } else if (pc == 5) {
-        console.log("You lose!")
-        return "You lose!";
-    }
-    return;
-}
+    //clean up space for results
+    const displayWinner = document.getElementById("container");
+    displayWinner.innerHTML = "";
 
+    if (user == 5) {
+        let win = document.createElement("h2");
+            win.innerHTML ="You win!";
+        displayWinner.appendChild(win);
+    } else if (pc == 5) {
+        let lose = document.createElement("h2");
+            lose.innerHTML = "You lose!";
+        displayWinner.appendChild(lose);
+    }
+//after announcing winner add reload button
+let playAgain = document.createElement("button");
+    playAgain.innerHTML = "Play again";
+    playAgain.style.marginTop = "20px";
+    playAgain.style.width = "150px";
+    playAgain.onclick = function() {window.location.reload()};
+displayWinner.appendChild(playAgain);
+return;
+}
 
 //EVENT LISTENERS
-document.querySelector('#r').addEventListener("click", () => {
-    round("rock", computerPlay());
-    winner(userWins, computerWins)
+const btnR = document.querySelector('#r');
+btnR.addEventListener("click", () => {
+    round("rock", pcPlay());
 });
 
-document.querySelector('#p').addEventListener('click', () => {
-    round("paper", computerPlay());
-    winner(userWins, computerWins)
+const btnP = document.querySelector('#p');
+btnP.addEventListener('click', () => {
+    round("paper", pcPlay());
 });
 
-document.querySelector('#s').addEventListener('click', () => {
-    round("scissors", computerPlay());
-    winner(userWins, computerWins)
+const btnS = document.querySelector('#s');
+btnS.addEventListener('click', () => {
+    round("scissors", pcPlay());
 });
 
-//Add a div for displaying results and change all of your console.logs into DOM methods.
-const div = document.createElement('div'); 
+//testWinner with all buttons (it was less code by adding the line to each, but it is a useful test)
+const allBtn = document.getElementById("buttons").childNodes;;
 
-//Display the running score,
-//and announce a winner of the game once one player reaches 5 points.
+for (var i = 0; i < allBtn.length; i++) {
+    addEvent(allBtn[i], "click", testWinner);
+};
 
-
-
-
-/* function game() {
-
-    //play 5 rounds
-    for (let i = 5; i > 0; i--) {
-
-        //ASK USER TO CHOOSE
-        let userChoice = prompt("Rock, paper, or scissors?");
-        userChoice = userChoice.toLowerCase();
-        console.log(userChoice);
-
-        if (userChoice !== "rock" && userChoice !== "paper" && userChoice !== "scissors") {
-            console.log(userChoice + " is an invalid input, try again");
-            i++;
-            continue;
-        }
-
-        //computer choice
-        let computerChoice = computerPlay();
-        console.log(computerChoice);
-
-        //play round
-        round(userChoice, computerChoice);
+function addEvent(element, event_name, func) {
+    if (element.addEventListener) {
+        element.addEventListener(event_name, func, false); 
+    } else if (element.attachEvent)  {
+        element.attachEvent("on"+event_name, func);
     }
-
-    //compare wins and losses
-    if (userWins > computerWins) {
-        console.log("You win");
-        return "You win";
-    } else if (userWins < computerWins) {
-        console.log("You lose");
-        return "You lose";
-    } else if (userWins == computerWins) {
-        console.log("It's a draw");
-        return "It's a draw";
-    }
-
-    console.log("Something is wrong");
-    return "Something is wrong";
 }
-
-game(); */
