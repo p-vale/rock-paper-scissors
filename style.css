@@ -68,7 +68,7 @@ button:hover {
 }
 
 #roundResult {
-    min-height: 25px; /*the result starts empity, make shure the space doesn't change*/
+    min-height: 25px; /*the result starts empity, make sure the space doesn't change*/
     padding-bottom: 4vh;
 }
 

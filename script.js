@@ -9,7 +9,6 @@ function pcPlay() {
     return rps[Math.floor(Math.random() * rps.length)]; 
 }
 
-
 function round(user, pc) {
 
     if (user === pc) {
@@ -39,7 +38,6 @@ function round(user, pc) {
     }
 }
 
-
 function testWinner() {
     if (userWins < 5 && pcWins < 5){
         yourWins.innerHTML = userWins;
@@ -48,7 +46,6 @@ function testWinner() {
         winner(userWins, pcWins);
     }
 }
-
 
 function winner(user, pc) {
     //clean up space for results
@@ -90,7 +87,7 @@ btnS.addEventListener('click', () => {
     round("scissors", pcPlay());
 });
 
-//testWinner with all buttons (it was less code by adding the line to each, but it is a useful test)
+//testWinner with all buttons
 const allBtn = document.getElementById("buttons").childNodes;;
 
 for (var i = 0; i < allBtn.length; i++) {
